@@ -1,3 +1,53 @@
+const tiles = [
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 15, -1, -1, -1, 15, -1, -1, -1, 12, 13, 13, 13, 13, 13, 13, 14, -1, -1, -1, -1, 15, -1, -1, -1, -1, 15, -1, -1, -1, -1, 15, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 15, -1, -1, -1, -1, 15, -1, -1, -1, -1, 15, -1, -1, -1, -1, 12, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 14, -1, -1, -1, -1, 3, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 15, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 15, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 7, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 15, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 15, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 7, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 7, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 7, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0, 1, 1, 2, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 11, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 15, -1, -1, -1, 15, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0, 1, 1, 2, -1, -1, 4, 5, 5, 6, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 3, -1, -1, -1, 3, -1, -1, -1, -1, 3, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 4, 5, 5, 6, -1, -1, 4, 5, 5, 6, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 12, 13, 13, 13, 14, -1, -1, -1, -1, 12, 13, 13, 13, 14, -1, -1, -1, -1, 0, 2, -1, -1, -1, -1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 2, -1, -1, -1, -1, 7, -1, -1, -1, 7, -1, -1, -1, -1, 7, -1, -1, -1, -1, 0, 1, 1, 2, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0, 1, 1, 1, 1, 1, 1, 1],
+    [-1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, -1, -1, 4, 5, 5, 6, -1, -1, 4, 5, 5, 6, -1, -1, -1, -1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 4, 6, -1, -1, -1, -1, 4, 5, 5, 5, 5, 5, 5, 5, 5, 6, -1, -1, -1, -1, 7, -1, -1, -1, 7, -1, -1, -1, -1, 7, -1, -1, -1, -1, 4, 5, 5, 6, -1, -1, -1, -1, 0, 1, 1, 2, -1, -1, -1, -1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 4, 5, 5, 5, 5, 5, 5, 5],
+    [-1, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, -1, -1, 4, 5, 5, 6, -1, -1, 4, 5, 5, 6, -1, -1, -1, -1, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 4, 6, -1, -1, -1, -1, 4, 5, 5, 5, 5, 5, 5, 5, 5, 6, -1, -1, -1, -1, 7, -1, -1, -1, 7, -1, -1, -1, -1, 7, -1, -1, -1, -1, 4, 5, 5, 6, -1, -1, -1, -1, 4, 5, 5, 6, -1, -1, -1, -1, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 4, 5, 5, 5, 5, 5, 5, 5],
+    [-1, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, -1, -1, 4, 5, 5, 6, -1, -1, 4, 5, 5, 6, -1, -1, -1, -1, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 4, 6, -1, -1, -1, -1, 4, 5, 5, 5, 5, 5, 5, 5, 5, 6, -1, -1, -1, -1, 7, -1, -1, -1, 7, -1, -1, -1, -1, 7, -1, -1, -1, -1, 4, 5, 5, 6, -1, -1, -1, -1, 4, 5, 5, 6, -1, -1, -1, -1, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 4, 5, 5, 5, 5, 5, 5, 5]
+]
+
+const spriteWidth = 64;
+const spriteHeight = 64;
+
+function createPlatforms() {
+    const platforms = [];
+
+    for (let row = 0; row < tiles.length; row++) {
+        for (let cell = 0; cell < tiles[row].length; cell++) {
+            if (tiles[row][cell] !== -1) {
+                if ((tiles[row][cell - 1]) && ((tiles[row][cell - 1]) !== -1)) {
+                    platforms[platforms.length - 1].width += 1;
+                } else {
+                    platforms.push({
+                        x: cell,
+                        y: row,
+                        width: 1,
+                    })
+
+                }
+            }
+        }
+    }
+
+    for (let platform of platforms) {
+        platform.x = platform.x * spriteWidth;
+        platform.y = platform.y * spriteHeight;
+        platform.width = platform.width * spriteWidth;
+        platform.height = spriteHeight;
+    }
+
+    return platforms
+}
+
+let platforms = createPlatforms()
+
 const playerSpritesheet = new Image();
 playerSpritesheet.src = './graphics/spritesheet.png'
 const playerSpritesheetFlipped = new Image();
@@ -6,8 +56,7 @@ playerSpritesheetFlipped.src = './graphics/spritesheetLeft.png'
 let currentFrame = 0;
 const numFrames = 8;
 
-const spriteWidth = 64;
-const spriteHeight = 64;
+
 
 const cloudImg = new Image();
 cloudImg.src = './graphics/clouds/1.png'
@@ -17,11 +66,11 @@ const cloudImg3 = new Image();
 cloudImg3.src = './graphics/clouds/3.png'
 
 
-const cloudImgs = [cloudImg, cloudImg2, cloudImg3]
+const cloudImgs = [cloudImg, cloudImg2, cloudImg3, cloudImg, cloudImg2, cloudImg3]
 
 
 const canvas = document.getElementById('canvas')
-canvas.height = window.innerHeight;
+canvas.height = spriteHeight*12;
 canvas.width = window.innerWidth;
 
 
@@ -31,36 +80,22 @@ const c = canvas.getContext('2d')
 const JUMP_SPEED = 22;
 const MOVE_SPEED = 5;
 const GRAVITY = 1;
+const startingPosition = 250;
+let scroll = 0;
 
 
 const animationFrameLimit = 1;
 let animationFrameCurrent = 0;
 
 const player = {
-    x: 100,
-    y: 400,
-    height: 128,
-    width: 128,
+    x: startingPosition,
+    y: 350,
+    height: spriteHeight * 2,
+    width: spriteWidth * 2,
     vy: 0,
     isJumping: false,
     lookingRight: true
 }
-
-
-
-const ground = {
-    x: 50,
-    y: 600,
-    height: 256,
-    width: 1500
-}
-const platform = {
-    x: 450,
-    y: 370,
-    height: 64,
-    width: 1000
-}
-
 
 const clouds = [
     {
@@ -74,7 +109,19 @@ const clouds = [
     {
         x: Math.random() * window.innerWidth,
         y: Math.random() * window.innerHeight / 2
-    }
+    },
+    {
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight / 2
+    },
+    {
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight / 2
+    },
+    {
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight / 2
+    },
 ]
 
 let cloudDrift = 0;
@@ -82,25 +129,53 @@ let cloudDrift = 0;
 
 function drawBackground() {
 
-    c.fillStyle = '#67bae0';
-    c.fillRect(0, 0, window.innerWidth, window.innerHeight)
+
+    c.fillStyle = 'rgb(52,124,255)';
+    c.fillRect(0, 0, window.innerWidth, spriteHeight*3)
+    c.fillStyle = 'rgb(152,130,237)';
+    c.fillRect(0, spriteHeight*3, window.innerWidth, spriteHeight)
+    c.fillStyle = 'rgb(52,124,255)';
+    c.fillRect(0, spriteHeight*3 + 15, window.innerWidth, 15)
+    c.fillStyle = 'rgb(232,135,229)';
+    c.fillRect(0, spriteHeight * 4, window.innerWidth, spriteHeight * 2)
+    c.fillStyle = 'rgb(152,130,237)';
+    c.fillRect(0, spriteHeight * 4 + 15, window.innerWidth, 15)
+    c.fillStyle = 'rgb(254,145,202)';
+    c.fillRect(0, spriteHeight * 5, window.innerWidth, window.innerHeight / 7)
+    c.fillStyle = 'rgb(232,135,229)';
+    c.fillRect(0,  spriteHeight * 5 + 15, window.innerWidth, 15)
+    c.fillStyle = 'rgb(81,112,159)';
+    c.fillRect(0, spriteHeight * 6, window.innerWidth, spriteHeight * 6)
+    c.fillStyle = 'rgb(61,91,142)';
+    c.fillRect(0, spriteHeight * 6 + 15, window.innerWidth, 15)
+    c.fillStyle = 'rgb(61,91,142)';
+    c.fillRect(0, spriteHeight * 6 + 45, window.innerWidth, 8)
+    c.fillStyle = 'rgb(198,188,216)';
+    c.fillRect(0, spriteHeight * 6 + 5, window.innerWidth, 8)
+    c.fillStyle = 'rgb(198,188,216)';
+    c.fillRect(0, spriteHeight * 6 + 35, window.innerWidth, 4)
+
+}
+
+
+function drawPlatforms() {
+
+    for (let platform of platforms) {
+        c.fillStyle = 'rgb(44,127,0)';
+        c.fillRect(platform.x - scroll, platform.y, platform.width, platform.height)
+        c.fillStyle = 'rgb(85,181,0)';
+        c.fillRect(platform.x - scroll, platform.y, platform.width, 6)
+        c.fillStyle = 'rgb(134,218,37)';
+        c.fillRect(platform.x - scroll, platform.y, platform.width,3)
+        c.fillStyle = 'rgb(36,97,1)';
+        c.fillRect(platform.x - scroll, platform.y + platform.height - 3, platform.width, 3)
+    }
+
 
 
 }
 
-function drawGround() {
 
-    c.fillStyle = 'green';
-    c.fillRect(ground.x, ground.y, ground.width, ground.height)
-
-}
-function drawPlatform() {
-
-    c.fillStyle = 'green';
-    c.fillRect(platform.x, platform.y, platform.width, platform.height)
-
-
-}
 function drawClouds() {
 
     cloudDrift += 0.3;
@@ -122,7 +197,7 @@ function drawPlayer() {
             0,
             spriteWidth,
             spriteHeight,
-            player.x,
+            player.x - scroll,
             player.y,
             player.width,
             player.height
@@ -135,7 +210,7 @@ function drawPlayer() {
             0,
             spriteWidth,
             spriteHeight,
-            player.x,
+            player.x - scroll,
             player.y,
             player.width,
             player.height
@@ -159,10 +234,12 @@ window.addEventListener('keydown', (e) => {
 
     if (e.key === 'ArrowRight') {
         player.x += MOVE_SPEED
+        detectHorizontalCollision()
         player.lookingRight = true;
     }
     if (e.key === 'ArrowLeft') {
         player.x -= MOVE_SPEED
+        detectHorizontalCollision()
         player.lookingRight = false;
     }
     if (e.key === ' ' && !player.isJumping) {
@@ -182,10 +259,12 @@ window.addEventListener('keyup', (e) => {
 function continuousMovement() {
     if (keyState['ArrowRight']) {
         player.x += MOVE_SPEED
+        detectHorizontalCollision()
         animate()
     }
     if (keyState['ArrowLeft']) {
         player.x -= MOVE_SPEED
+        detectHorizontalCollision()
         animate()
     }
     requestAnimationFrame(continuousMovement)
@@ -208,35 +287,90 @@ function animate() {
 
 function gameLoop() {
 
+    scroll = player.x - startingPosition;
+
+    if (checkYDeath()) {
+        console.log('game over')
+        showGameOver();
+        return;
+    };
+
     c.clearRect(0, 0, window.innerWidth, window.innerHeight)
 
 
     player.y += player.vy;
     player.vy += GRAVITY;
 
-
-    detectCollision()
-
-
-
+    detectVerticalCollision()
 
     drawBackground()
     drawClouds()
-    drawGround()
+
     drawPlayer()
-    drawPlatform()
+    drawPlatforms()
 
 
     requestAnimationFrame(gameLoop)
 }
 
 
+function checkYDeath() {
+    if (player.y > 2000) {
+        return true
+    }
+}
+
+function showGameOver() {
+    const gameOverDiv = document.createElement('div');
+    gameOverDiv.className = 'gameOverDiv'
+    gameOverDiv.innerHTML = `<h2 class='gameOverHeading'>GAME OVER</h2><button id='restartBtn'>restart</button>`
+    const restartBtn = gameOverDiv.querySelector('#restartBtn')
+    setTimeout(()=> {
+
+        restartBtn.onclick = () => {
+            location.reload()
+        }
+        document.addEventListener('keydown', (e) => {
+            if ((e.key === ' ') || (e.key === 'Enter')){
+                location.reload()
+            }
+        })
+    }, 400)
+  
 
 
-function detectCollision() {
+    document.body.append(gameOverDiv)
+}
 
 
-    for (let rect of [ground, platform]) {
+function detectHorizontalCollision() {
+
+
+    for (let rect of platforms) {
+
+        if (
+            player.x + 30 < rect.x + rect.width &&
+            player.x + player.width - 30 > rect.x &&
+            player.y + player.height > rect.y &&
+            player.y + 35 < rect.y + rect.height
+        ) {
+
+            if (player.lookingRight) {
+                player.x = rect.x - (player.width - 30)
+            }
+            else {
+                player.x = rect.x + rect.width - 30
+
+            }
+
+
+        }
+    }
+}
+function detectVerticalCollision() {
+
+
+    for (let rect of platforms) {
 
         if (
             player.x + 30 < rect.x + rect.width &&
@@ -256,22 +390,6 @@ function detectCollision() {
 
             }
 
-            // Check for side collisions
-            if (
-                player.y + 30 < rect.y + rect.height &&
-                player.y + player.height - 30 > rect.y &&
-                player.x + player.width > rect.x &&
-                player.x < rect.x + rect.width
-            ) {
-                console.log('side')
-                if (player.x < rect.x + rect.width / 2) {
-                    // Player is colliding from the left side of the rectangle
-                    player.x = rect.x - player.width;
-                } else {
-                    // Player is colliding from the right side of the rectangle
-                    player.x = rect.x + rect.width;
-                }
-            }
 
         }
     }
@@ -280,6 +398,3 @@ function detectCollision() {
 
 
 gameLoop()
-
-
-console.log(canvas)
