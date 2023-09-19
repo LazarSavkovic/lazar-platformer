@@ -1,3 +1,48 @@
+const spriteWidth = 64;
+const spriteHeight = 64;
+
+function createBackground() {
+
+
+    const backgroundCanvas = document.getElementById('backgroundCanvas')
+    backgroundCanvas.height = spriteHeight * 12;
+    backgroundCanvas.width = window.innerWidth;
+
+    const bc = backgroundCanvas.getContext('2d')
+
+    function drawBackground() {
+
+
+        bc.fillStyle = 'rgb(52,124,255)';
+        bc.fillRect(0, 0, window.innerWidth, spriteHeight * 3)
+        bc.fillStyle = 'rgb(152,130,237)';
+        bc.fillRect(0, spriteHeight * 3, window.innerWidth, spriteHeight)
+        bc.fillStyle = 'rgb(52,124,255)';
+        bc.fillRect(0, spriteHeight * 3 + 15, window.innerWidth, 15)
+        bc.fillStyle = 'rgb(232,135,229)';
+        bc.fillRect(0, spriteHeight * 4, window.innerWidth, spriteHeight * 2)
+        bc.fillStyle = 'rgb(152,130,237)';
+        bc.fillRect(0, spriteHeight * 4 + 15, window.innerWidth, 15)
+        bc.fillStyle = 'rgb(254,145,202)';
+        bc.fillRect(0, spriteHeight * 5, window.innerWidth, window.innerHeight / 7)
+        bc.fillStyle = 'rgb(232,135,229)';
+        bc.fillRect(0, spriteHeight * 5 + 15, window.innerWidth, 15)
+        bc.fillStyle = 'rgb(81,112,159)';
+        bc.fillRect(0, spriteHeight * 6, window.innerWidth, spriteHeight * 6)
+        bc.fillStyle = 'rgb(61,91,142)';
+        bc.fillRect(0, spriteHeight * 6 + 15, window.innerWidth, 15)
+        bc.fillStyle = 'rgb(61,91,142)';
+        bc.fillRect(0, spriteHeight * 6 + 45, window.innerWidth, 8)
+        bc.fillStyle = 'rgb(198,188,216)';
+        bc.fillRect(0, spriteHeight * 6 + 5, window.innerWidth, 8)
+        bc.fillStyle = 'rgb(198,188,216)';
+        bc.fillRect(0, spriteHeight * 6 + 35, window.innerWidth, 4)
+
+    }
+    drawBackground();
+}
+createBackground()
+
 const tiles = [
     [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
     [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 15, -1, -1, -1, 15, -1, -1, -1, 12, 13, 13, 13, 13, 13, 13, 14, -1, -1, -1, -1, 15, -1, -1, -1, -1, 15, -1, -1, -1, -1, 15, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 15, -1, -1, -1, -1, 15, -1, -1, -1, -1, 15, -1, -1, -1, -1, 12, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 14, -1, -1, -1, -1, 3, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
@@ -13,8 +58,7 @@ const tiles = [
     [-1, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, -1, -1, 4, 5, 5, 6, -1, -1, 4, 5, 5, 6, -1, -1, -1, -1, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 4, 6, -1, -1, -1, -1, 4, 5, 5, 5, 5, 5, 5, 5, 5, 6, -1, -1, -1, -1, 7, -1, -1, -1, 7, -1, -1, -1, -1, 7, -1, -1, -1, -1, 4, 5, 5, 6, -1, -1, -1, -1, 4, 5, 5, 6, -1, -1, -1, -1, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 4, 5, 5, 5, 5, 5, 5, 5]
 ]
 
-const spriteWidth = 64;
-const spriteHeight = 64;
+
 
 function createPlatforms() {
     const platforms = [];
@@ -70,7 +114,7 @@ const cloudImgs = [cloudImg, cloudImg2, cloudImg3, cloudImg, cloudImg2, cloudImg
 
 
 const canvas = document.getElementById('canvas')
-canvas.height = spriteHeight*12;
+canvas.height = spriteHeight * 12;
 canvas.width = window.innerWidth;
 
 
@@ -127,35 +171,7 @@ const clouds = [
 let cloudDrift = 0;
 
 
-function drawBackground() {
 
-
-    c.fillStyle = 'rgb(52,124,255)';
-    c.fillRect(0, 0, window.innerWidth, spriteHeight*3)
-    c.fillStyle = 'rgb(152,130,237)';
-    c.fillRect(0, spriteHeight*3, window.innerWidth, spriteHeight)
-    c.fillStyle = 'rgb(52,124,255)';
-    c.fillRect(0, spriteHeight*3 + 15, window.innerWidth, 15)
-    c.fillStyle = 'rgb(232,135,229)';
-    c.fillRect(0, spriteHeight * 4, window.innerWidth, spriteHeight * 2)
-    c.fillStyle = 'rgb(152,130,237)';
-    c.fillRect(0, spriteHeight * 4 + 15, window.innerWidth, 15)
-    c.fillStyle = 'rgb(254,145,202)';
-    c.fillRect(0, spriteHeight * 5, window.innerWidth, window.innerHeight / 7)
-    c.fillStyle = 'rgb(232,135,229)';
-    c.fillRect(0,  spriteHeight * 5 + 15, window.innerWidth, 15)
-    c.fillStyle = 'rgb(81,112,159)';
-    c.fillRect(0, spriteHeight * 6, window.innerWidth, spriteHeight * 6)
-    c.fillStyle = 'rgb(61,91,142)';
-    c.fillRect(0, spriteHeight * 6 + 15, window.innerWidth, 15)
-    c.fillStyle = 'rgb(61,91,142)';
-    c.fillRect(0, spriteHeight * 6 + 45, window.innerWidth, 8)
-    c.fillStyle = 'rgb(198,188,216)';
-    c.fillRect(0, spriteHeight * 6 + 5, window.innerWidth, 8)
-    c.fillStyle = 'rgb(198,188,216)';
-    c.fillRect(0, spriteHeight * 6 + 35, window.innerWidth, 4)
-
-}
 
 
 function drawPlatforms() {
@@ -166,7 +182,7 @@ function drawPlatforms() {
         c.fillStyle = 'rgb(85,181,0)';
         c.fillRect(platform.x - scroll, platform.y, platform.width, 6)
         c.fillStyle = 'rgb(134,218,37)';
-        c.fillRect(platform.x - scroll, platform.y, platform.width,3)
+        c.fillRect(platform.x - scroll, platform.y, platform.width, 3)
         c.fillStyle = 'rgb(36,97,1)';
         c.fillRect(platform.x - scroll, platform.y + platform.height - 3, platform.width, 3)
     }
@@ -303,7 +319,7 @@ function gameLoop() {
 
     detectVerticalCollision()
 
-    drawBackground()
+    // drawBackground()
     drawClouds()
 
     drawPlayer()
@@ -325,18 +341,18 @@ function showGameOver() {
     gameOverDiv.className = 'gameOverDiv'
     gameOverDiv.innerHTML = `<h2 class='gameOverHeading'>GAME OVER</h2><button id='restartBtn'>restart</button>`
     const restartBtn = gameOverDiv.querySelector('#restartBtn')
-    setTimeout(()=> {
+    setTimeout(() => {
 
         restartBtn.onclick = () => {
             location.reload()
         }
         document.addEventListener('keydown', (e) => {
-            if ((e.key === ' ') || (e.key === 'Enter')){
+            if ((e.key === ' ') || (e.key === 'Enter')) {
                 location.reload()
             }
         })
     }, 400)
-  
+
 
 
     document.body.append(gameOverDiv)
