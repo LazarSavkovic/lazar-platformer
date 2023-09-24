@@ -1,12 +1,25 @@
-const spriteWidth = 64;
-const spriteHeight = 64;
+let canvasHeight 
+let canvasWidth;
+
+if (window.innerWidth < 768) {
+    canvasWidth = window.innerHeight;
+    canvasHeight = window.innerWidth;
+} else {
+    canvasHeight = window.innerHeight;
+    canvasWidth = window.innerWidth;
+}
+
+
+const spriteWidth = canvasHeight/12;
+const spriteHeight = canvasHeight/12;
+const playerImageHeight = 64;
 
 function createBackground() {
 
 
     const backgroundCanvas = document.getElementById('backgroundCanvas')
     backgroundCanvas.height = spriteHeight * 12;
-    backgroundCanvas.width = window.innerWidth;
+    backgroundCanvas.width = canvasWidth;
 
     const bc = backgroundCanvas.getContext('2d')
 
@@ -14,29 +27,29 @@ function createBackground() {
 
 
         bc.fillStyle = 'rgb(52,124,255)';
-        bc.fillRect(0, 0, window.innerWidth, spriteHeight * 3)
+        bc.fillRect(0, 0, canvasWidth, spriteHeight * 3)
         bc.fillStyle = 'rgb(152,130,237)';
-        bc.fillRect(0, spriteHeight * 3, window.innerWidth, spriteHeight)
+        bc.fillRect(0, spriteHeight * 3, canvasWidth, spriteHeight)
         bc.fillStyle = 'rgb(52,124,255)';
-        bc.fillRect(0, spriteHeight * 3 + 15, window.innerWidth, 15)
+        bc.fillRect(0, spriteHeight * 3 + 15, canvasWidth, 15)
         bc.fillStyle = 'rgb(232,135,229)';
-        bc.fillRect(0, spriteHeight * 4, window.innerWidth, spriteHeight * 2)
+        bc.fillRect(0, spriteHeight * 4, canvasWidth, spriteHeight * 2)
         bc.fillStyle = 'rgb(152,130,237)';
-        bc.fillRect(0, spriteHeight * 4 + 15, window.innerWidth, 15)
+        bc.fillRect(0, spriteHeight * 4 + 15, canvasWidth, 15)
         bc.fillStyle = 'rgb(254,145,202)';
-        bc.fillRect(0, spriteHeight * 5, window.innerWidth, window.innerHeight / 7)
+        bc.fillRect(0, spriteHeight * 5, canvasWidth, canvasHeight / 7)
         bc.fillStyle = 'rgb(232,135,229)';
-        bc.fillRect(0, spriteHeight * 5 + 15, window.innerWidth, 15)
+        bc.fillRect(0, spriteHeight * 5 + 15, canvasWidth, 15)
         bc.fillStyle = 'rgb(81,112,159)';
-        bc.fillRect(0, spriteHeight * 6, window.innerWidth, spriteHeight * 6)
+        bc.fillRect(0, spriteHeight * 6, canvasWidth, spriteHeight * 6)
         bc.fillStyle = 'rgb(61,91,142)';
-        bc.fillRect(0, spriteHeight * 6 + 15, window.innerWidth, 15)
+        bc.fillRect(0, spriteHeight * 6 + 15, canvasWidth, 15)
         bc.fillStyle = 'rgb(61,91,142)';
-        bc.fillRect(0, spriteHeight * 6 + 45, window.innerWidth, 8)
+        bc.fillRect(0, spriteHeight * 6 + 45, canvasWidth, 8)
         bc.fillStyle = 'rgb(198,188,216)';
-        bc.fillRect(0, spriteHeight * 6 + 5, window.innerWidth, 8)
+        bc.fillRect(0, spriteHeight * 6 + 5, canvasWidth, 8)
         bc.fillStyle = 'rgb(198,188,216)';
-        bc.fillRect(0, spriteHeight * 6 + 35, window.innerWidth, 4)
+        bc.fillRect(0, spriteHeight * 6 + 35, canvasWidth, 4)
 
     }
     drawBackground();
@@ -115,7 +128,7 @@ const cloudImgs = [cloudImg, cloudImg2, cloudImg3, cloudImg, cloudImg2, cloudImg
 
 const canvas = document.getElementById('canvas')
 canvas.height = spriteHeight * 12;
-canvas.width = window.innerWidth;
+canvas.width = canvasWidth;
 
 
 const c = canvas.getContext('2d')
@@ -143,28 +156,28 @@ const player = {
 
 const clouds = [
     {
-        x: Math.random() * window.innerWidth,
-        y: Math.random() * window.innerHeight / 2
+        x: Math.random() * canvasWidth,
+        y: Math.random() * canvasHeight / 2
     },
     {
-        x: Math.random() * window.innerWidth,
-        y: Math.random() * window.innerHeight / 2
+        x: Math.random() * canvasWidth,
+        y: Math.random() * canvasHeight / 2
     },
     {
-        x: Math.random() * window.innerWidth,
-        y: Math.random() * window.innerHeight / 2
+        x: Math.random() * canvasWidth,
+        y: Math.random() * canvasHeight / 2
     },
     {
-        x: Math.random() * window.innerWidth,
-        y: Math.random() * window.innerHeight / 2
+        x: Math.random() * canvasWidth,
+        y: Math.random() * canvasHeight / 2
     },
     {
-        x: Math.random() * window.innerWidth,
-        y: Math.random() * window.innerHeight / 2
+        x: Math.random() * canvasWidth,
+        y: Math.random() * canvasHeight / 2
     },
     {
-        x: Math.random() * window.innerWidth,
-        y: Math.random() * window.innerHeight / 2
+        x: Math.random() * canvasWidth,
+        y: Math.random() * canvasHeight / 2
     },
 ]
 
@@ -209,10 +222,10 @@ function drawPlayer() {
     if (player.lookingRight) {
         c.drawImage(
             playerSpritesheet,
-            currentFrame * spriteWidth,
+            currentFrame * playerImageHeight,
             0,
-            spriteWidth,
-            spriteHeight,
+            playerImageHeight,
+            playerImageHeight,
             player.x - scroll,
             player.y,
             player.width,
@@ -222,10 +235,10 @@ function drawPlayer() {
     } else {
         c.drawImage(
             playerSpritesheetFlipped,
-            currentFrame * spriteWidth,
+            currentFrame * playerImageHeight,
             0,
-            spriteWidth,
-            spriteHeight,
+            playerImageHeight,
+            playerImageHeight,
             player.x - scroll,
             player.y,
             player.width,
@@ -311,7 +324,7 @@ function gameLoop() {
         return;
     };
 
-    c.clearRect(0, 0, window.innerWidth, window.innerHeight)
+    c.clearRect(0, 0, canvasWidth, canvasHeight)
 
 
     player.y += player.vy;
