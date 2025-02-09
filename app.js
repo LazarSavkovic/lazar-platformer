@@ -1,5 +1,6 @@
 const showThis = document.getElementById('showThis')
 const links = document.getElementById('links')
+const finsih = document.getElementById('finish')
 
 let canvasHeight 
 let canvasWidth;
@@ -290,20 +291,28 @@ window.addEventListener('keyup', (e) => {
     keyState[e.key] = false
 })
 
-
 function continuousMovement() {
-    if (keyState['ArrowRight']) {
-        player.x += MOVE_SPEED
-        detectHorizontalCollision()
-        animate()
+    // If either arrow key is pressed, move and animate.
+    if (keyState['ArrowRight'] || keyState['ArrowLeft']) {
+        if (keyState['ArrowRight']) {
+            player.x += MOVE_SPEED;
+            detectHorizontalCollision();
+            player.lookingRight = true;
+        }
+        if (keyState['ArrowLeft']) {
+            player.x -= MOVE_SPEED;
+            detectHorizontalCollision();
+            player.lookingRight = false;
+        }
+        animate();
+    } else {
+        // No horizontal input: reset the sprite frame to the idle frame.
+        currentFrame = player.lookingRight ?  0 : 7; // Change this value if your idle frame should be different.
     }
-    if (keyState['ArrowLeft']) {
-        player.x -= MOVE_SPEED
-        detectHorizontalCollision()
-        animate()
-    }
-    requestAnimationFrame(continuousMovement)
+    requestAnimationFrame(continuousMovement);
 }
+
+
 continuousMovement()
 
 function animate() {
@@ -345,6 +354,7 @@ function gameLoop() {
     drawPlatforms()
     showThis.style.left =  500 -scroll + 'px'
     links.style.left =  1100 -scroll + 'px'
+    finish.style.left =  10000 -scroll + 'px'
 
     requestAnimationFrame(gameLoop)
 }

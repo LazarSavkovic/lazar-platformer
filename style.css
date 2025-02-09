@@ -78,6 +78,10 @@ body {
     top: 600px;
     left: 0;
 }
+#finish {
+    top: 60px;
+    left: 0;
+}
 
 #links a {
     font-size: 1.7rem;
