@@ -1,3 +1,6 @@
+const showThis = document.getElementById('showThis')
+const links = document.getElementById('links')
+
 let canvasHeight 
 let canvasWidth;
 
@@ -340,7 +343,8 @@ function gameLoop() {
 
     drawPlayer()
     drawPlatforms()
-
+    showThis.style.left =  500 -scroll + 'px'
+    links.style.left =  1100 -scroll + 'px'
 
     requestAnimationFrame(gameLoop)
 }
