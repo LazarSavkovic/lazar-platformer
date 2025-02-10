@@ -16,6 +16,12 @@ if (window.innerWidth < 768) {
 
 const spriteWidth = canvasHeight/12;
 const spriteHeight = canvasHeight/12;
+
+showThis.style.top = 1*spriteHeight + 'px'
+links.style.top = 8*spriteHeight + 'px'
+finish.style.top = 2*spriteHeight + 'px'
+
+
 const playerImageHeight = 64;
 
 function createBackground() {
@@ -352,9 +358,9 @@ function gameLoop() {
 
     drawPlayer()
     drawPlatforms()
-    showThis.style.left =  500 -scroll + 'px'
-    links.style.left =  1100 -scroll + 'px'
-    finish.style.left =  10000 -scroll + 'px'
+    showThis.style.left =  9*spriteWidth -scroll + 'px'
+    links.style.left =  16*spriteWidth -scroll + 'px'
+    finish.style.left =  155*spriteWidth -scroll + 'px'
 
     requestAnimationFrame(gameLoop)
 }
