@@ -552,29 +552,30 @@ function detectHorizontalCollision() {
     }
 }
 function detectVerticalCollision() {
-
-
     for (let rect of platforms) {
-
         if (
             player.x + (spriteWidth / 2) < rect.x + rect.width &&
             player.x + player.width - (spriteWidth / 2) > rect.x &&
             player.y + player.height > rect.y &&
             player.y + (spriteWidth / 2) < rect.y + rect.height
         ) {
-
             if (player.vy > 0) {
-                player.y = rect.y - player.height;
-                player.vy = 0;
-                player.isJumping = false;
+                // Only snap to platform if we're directly above it (check horizontal position)
+                const playerCenterX = player.x + player.width / 2;
+                const platformLeft = rect.x;
+                const platformRight = rect.x + rect.width;
+                
+                // Only align Y position if we're within platform bounds horizontally
+                if (playerCenterX >= platformLeft && playerCenterX <= platformRight) {
+                    player.y = rect.y - player.height;
+                    player.vy = 0;
+                    player.isJumping = false;
+                }
             }
             else if (player.vy < 0) {
                 player.y = rect.y + rect.height;
                 player.vy = 0;
-
             }
-
-
         }
     }
 }
