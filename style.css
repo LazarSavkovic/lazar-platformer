@@ -298,6 +298,68 @@ body {
 
 
 
+/* Mobile styles for smaller screens */
+@media screen and (max-width: 767px) {
+    .boxContent {
+        font-size: 1rem !important;
+    }
+    
+    .boxContent h1 {
+        font-size: 1.2rem !important;
+    }
+    
+    .boxContent h2 {
+        font-size: 1rem !important;
+    }
+    
+    #links a {
+        font-size: 1.2rem !important;
+    }
+    
+    /* Reduce sign widths */
+    #skills {
+        min-width: 280px !important;
+        max-width: 280px !important;
+        padding: 15px !important;
+    }
+    
+    #skills .notice-paper h2 {
+        font-size: 1.2rem !important;
+    }
+    
+    #skills .notice-paper ul {
+        font-size: 1rem !important;
+    }
+    
+    #teachingStats {
+        min-width: 280px !important;
+        max-width: 280px !important;
+        padding: 10px !important;
+    }
+    
+    #teachingStats .terminal-title {
+        font-size: 0.9rem !important;
+    }
+    
+    #teachingStats .terminal-content {
+        font-size: 1rem !important;
+    }
+    
+    #project {
+        min-width: 280px !important;
+        max-width: 280px !important;
+        padding: 15px !important;
+    }
+    
+    #project h2 {
+        font-size: 1.1rem !important;
+    }
+    
+    #project p {
+        font-size: 1rem !important;
+    }
+}
+
 @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
     html {
       transform: rotate(-90deg);
