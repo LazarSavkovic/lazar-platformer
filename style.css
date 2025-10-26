@@ -366,10 +366,20 @@ body {
     bottom: 20px;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 20px;
+    padding: 0 20px;
     z-index: 1000;
+    pointer-events: none;
+}
+
+.mobile-controls .control-btn {
+    pointer-events: all;
+}
+
+.mobile-controls .left-btn,
+.mobile-controls .right-btn {
+    margin-left: auto;
 }
 
 .control-btn {
@@ -393,6 +403,11 @@ body {
     box-shadow: 
         1px 1px 0 rgb(50, 50, 50),
         0 0 0 2px rgb(150, 150, 150);
+}
+
+.arrow-controls {
+    display: flex;
+    gap: 20px;
 }
 
 @media screen and (min-width: 768px) {
