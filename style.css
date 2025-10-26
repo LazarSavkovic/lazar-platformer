@@ -360,6 +360,46 @@ body {
     }
 }
 
+/* Mobile Controls */
+.mobile-controls {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    z-index: 1000;
+}
+
+.control-btn {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgb(60, 60, 60);
+    background: rgb(200, 200, 200);
+    color: rgb(40, 40, 40);
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 
+        3px 3px 0 rgb(50, 50, 50),
+        0 0 0 2px rgb(150, 150, 150);
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.control-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 
+        1px 1px 0 rgb(50, 50, 50),
+        0 0 0 2px rgb(150, 150, 150);
+}
+
+@media screen and (min-width: 768px) {
+    .mobile-controls {
+        display: none;
+    }
+}
+
 @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
     html {
       transform: rotate(-90deg);

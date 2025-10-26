@@ -344,6 +344,57 @@ const keyState = {
 }
 
 
+// Mobile control handlers
+const leftBtn = document.getElementById('leftBtn');
+const rightBtn = document.getElementById('rightBtn');
+const jumpBtn = document.getElementById('jumpBtn');
+
+leftBtn.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    keyState['ArrowLeft'] = true;
+    keyState['ArrowRight'] = false;
+});
+leftBtn.addEventListener('mousedown', (e) => {
+    e.preventDefault();
+    keyState['ArrowLeft'] = true;
+    keyState['ArrowRight'] = false;
+});
+
+rightBtn.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    keyState['ArrowRight'] = true;
+    keyState['ArrowLeft'] = false;
+});
+rightBtn.addEventListener('mousedown', (e) => {
+    e.preventDefault();
+    keyState['ArrowRight'] = true;
+    keyState['ArrowLeft'] = false;
+});
+
+jumpBtn.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    if (!player.isJumping) {
+        player.vy -= JUMP_SPEED;
+        player.isJumping = true;
+    }
+});
+jumpBtn.addEventListener('mousedown', (e) => {
+    e.preventDefault();
+    if (!player.isJumping) {
+        player.vy -= JUMP_SPEED;
+        player.isJumping = true;
+    }
+});
+
+// Release handlers
+leftBtn.addEventListener('touchend', () => keyState['ArrowLeft'] = false);
+leftBtn.addEventListener('mouseup', () => keyState['ArrowLeft'] = false);
+leftBtn.addEventListener('mouseleave', () => keyState['ArrowLeft'] = false);
+
+rightBtn.addEventListener('touchend', () => keyState['ArrowRight'] = false);
+rightBtn.addEventListener('mouseup', () => keyState['ArrowRight'] = false);
+rightBtn.addEventListener('mouseleave', () => keyState['ArrowRight'] = false);
+
 window.addEventListener('keydown', (e) => {
 
     e.preventDefault()
