@@ -364,38 +364,45 @@ body {
 .mobile-controls {
     position: fixed;
     bottom: 20px;
-    width: 100%;
+    left: 0;
+    right: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
     z-index: 1000;
     pointer-events: none;
+    box-sizing: border-box;
 }
 
 .mobile-controls .control-btn {
     pointer-events: all;
 }
 
-.mobile-controls .left-btn,
-.mobile-controls .right-btn {
+.mobile-controls .arrow-controls {
     margin-left: auto;
 }
 
+.arrow-controls {
+    display: flex;
+    gap: 10px;
+}
+
 .control-btn {
-    width: 60px;
-    height: 60px;
-    border: 4px solid rgb(60, 60, 60);
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgb(60, 60, 60);
     background: rgb(200, 200, 200);
     color: rgb(40, 40, 40);
-    font-size: 2rem;
+    font-size: 1.6rem;
     font-weight: bold;
     cursor: pointer;
     box-shadow: 
-        3px 3px 0 rgb(50, 50, 50),
+        2px 2px 0 rgb(50, 50, 50),
         0 0 0 2px rgb(150, 150, 150);
     user-select: none;
     -webkit-tap-highlight-color: transparent;
+    flex-shrink: 0;
 }
 
 .control-btn:active {
