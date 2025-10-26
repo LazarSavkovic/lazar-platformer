@@ -197,9 +197,9 @@ const c = canvas.getContext('2d')
 
 
 
-const MOVE_SPEED = canvasWidth / 300;
 const GRAVITY = canvasHeight / 1080;
 const isMobile = window.innerWidth < 768;
+const MOVE_SPEED = isMobile ? canvasWidth / 200 : canvasWidth / 300;
 const JUMP_SPEED = isMobile ? GRAVITY * 35 : GRAVITY * 25;
 const startingPosition = canvasWidth * 1/6;
 let scroll = 0;
