@@ -123,6 +123,50 @@ function createPlatforms() {
 
 let platforms = createPlatforms()
 
+// Create decorations positioned on top of platforms
+const decorations = [];
+const tuftImg = new Image();
+tuftImg.src = './graphics/tuft3.png'
+const flwrImg = new Image();
+flwrImg.src = './graphics/flwr.png'
+const flwr2Img = new Image();
+flwr2Img.src = './graphics/flwr2.png'
+const flwr3Img = new Image();
+flwr3Img.src = './graphics/flwr3.png'
+
+// Helper function to check if there's a tile above this position
+function isTopTile(row, col) {
+    if (row === 0) return true; // Top row has no tile above
+    return tiles[row - 1][col] === 0; // No tile above means it's on top
+}
+
+// Add decorations only to top tiles (tiles that don't have another tile above them)
+for (let row = 0; row < tiles.length; row++) {
+    for (let col = 0; col < tiles[row].length; col++) {
+        if (tiles[row][col] === 1 && isTopTile(row, col)) {
+            if (Math.random() > 0.6) { // 40% chance to add a decoration
+                // Randomly assign decoration type once when created
+                const decorationType = Math.random();
+                let type;
+                if (decorationType < 0.7) {
+                    type = 'tuft'; // 70% - tufts are much more common
+                } else if (decorationType < 0.833) {
+                    type = 'flwr'; // ~13.3%
+                } else if (decorationType < 0.916) {
+                    type = 'flwr2'; // ~8.3%
+                } else {
+                    type = 'flwr3'; // ~8.3%
+                }
+                decorations.push({
+                    x: col * spriteWidth,
+                    y: row * spriteHeight,
+                    type: type
+                });
+            }
+        }
+    }
+}
+
 const playerSpritesheet = new Image();
 playerSpritesheet.src = './graphics/spritesheet.png'
 const playerSpritesheetFlipped = new Image();
@@ -221,6 +265,33 @@ function drawPlatforms() {
 
 
 
+}
+
+function drawDecorations() {
+    const decorationSize = spriteHeight * 0.5; // Decoration size
+    
+    for (let decoration of decorations) {
+        // Use the stored decoration type
+        let img;
+        
+        if (decoration.type === 'tuft') {
+            img = tuftImg;
+        } else if (decoration.type === 'flwr') {
+            img = flwrImg;
+        } else if (decoration.type === 'flwr2') {
+            img = flwr2Img;
+        } else {
+            img = flwr3Img;
+        }
+        
+        c.drawImage(
+            img,
+            decoration.x - scroll,
+            decoration.y - decorationSize, // Place decoration on top of platform
+            decorationSize,
+            decorationSize
+        )
+    }
 }
 
 
@@ -364,6 +435,7 @@ function gameLoop() {
 
     drawPlayer()
     drawPlatforms()
+    drawDecorations()
     showThis.style.left =  9*spriteWidth -scroll + 'px'
     links.style.left =  16*spriteWidth -scroll + 'px'
     skills.style.left =  36*spriteWidth -scroll + 'px'
