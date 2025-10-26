@@ -529,26 +529,25 @@ function showGameOver() {
 
 
 function detectHorizontalCollision() {
-
-
     for (let rect of platforms) {
-
+        // Only check collision if player is actually moving horizontally
         if (
             player.x + (spriteWidth / 2) < rect.x + rect.width &&
             player.x + player.width - (spriteWidth / 2) > rect.x &&
             player.y + player.height > rect.y &&
             player.y + (spriteWidth / 2) < rect.y + rect.height
         ) {
+            // Don't teleport if player is jumping/flying and moving in air
+            if (player.isJumping && player.vy != 0) {
+                return; // Skip horizontal collision during active jump
+            }
 
             if (player.lookingRight) {
                 player.x = rect.x - (player.width - (spriteWidth / 2))
             }
             else {
                 player.x = rect.x + rect.width - (spriteWidth / 2)
-
             }
-
-
         }
     }
 }

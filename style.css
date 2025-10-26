@@ -364,9 +364,10 @@ body {
 .mobile-controls {
     position: fixed;
     bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 100%;
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 20px;
     z-index: 1000;
 }
