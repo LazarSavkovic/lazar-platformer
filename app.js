@@ -1,6 +1,9 @@
 const showThis = document.getElementById('showThis')
 const links = document.getElementById('links')
-const finsih = document.getElementById('finish')
+const finish = document.getElementById('finish')
+const skills = document.getElementById('skills')
+const teachingStats = document.getElementById('teachingStats')
+const project = document.getElementById('project')
 
 let canvasHeight 
 let canvasWidth;
@@ -19,6 +22,9 @@ const spriteHeight = canvasHeight/12;
 
 showThis.style.top = 1*spriteHeight + 'px'
 links.style.top = 8*spriteHeight + 'px'
+skills.style.top = 4*spriteHeight + 'px'
+teachingStats.style.top = 2*spriteHeight + 'px'
+project.style.top = 1*spriteHeight + 'px'
 finish.style.top = 2*spriteHeight + 'px'
 
 
@@ -360,6 +366,9 @@ function gameLoop() {
     drawPlatforms()
     showThis.style.left =  9*spriteWidth -scroll + 'px'
     links.style.left =  16*spriteWidth -scroll + 'px'
+    skills.style.left =  36*spriteWidth -scroll + 'px'
+    teachingStats.style.left =  70*spriteWidth -scroll + 'px'
+    project.style.left =  125*spriteWidth -scroll + 'px'
     finish.style.left =  155*spriteWidth -scroll + 'px'
 
     requestAnimationFrame(gameLoop)
